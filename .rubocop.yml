@@ -15,3 +15,10 @@ AllCops:
   TargetRailsVersion: 7.0
   NewCops: enable
   CacheRootDirectory: tmp/rubocop
+
+##############################################################################
+# Bundler
+##############################################################################
+
+Bundler/OrderedGems:
+  TreatCommentsAsGroupSeparators: false
