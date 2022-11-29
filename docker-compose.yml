@@ -1,0 +1,36 @@
+version: "3"
+services:
+  elasticsearch:
+    command: elasticsearch
+    container_name: elasticsearch-sample-elasticsearch
+    environment:
+      ES_CLUSTER_NAME: elasticsearch
+      ES_DISCOVERY_TYPE: zen
+      ES_JAVA_OPTS: -Xms700m -Xmx700m
+      ES_NODE_NAME: node-01
+      xpack.security.enabled: "false"
+      discovery.type: single-node
+    build: ./docker/elasticsearch
+    ports:
+      - 19200:9200
+      - 19300:9300
+    stop_signal: SIGTERM
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch-sample/data
+  mysql:
+    container_name: elasticsearch-sample-mysql
+    image: mysql/mysql-server:8.0.23
+    ports:
+      - 13306:3306
+    environment:
+      MYSQL_PASSWORD: nobody
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: nobody
+    stop_signal: SIGTERM
+    volumes:
+      - mysql-data:/var/lib/elasticsearch-sample/mysql
+
+volumes:
+  elasticsearch-data:
+  mysql-data:
