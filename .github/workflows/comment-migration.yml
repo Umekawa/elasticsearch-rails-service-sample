@@ -1,0 +1,35 @@
+name: Make Migration list
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'db/schema.rb'
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+jobs:  
+  auto_update_pull_request:
+    name: Auto update the pull request just opened
+    runs-on: ubuntu-latest
+    outputs:
+      replaced_description1: ${{ steps.get_description.outputs.replaced_description }}
+    steps:  
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Get current pull request description
+        id: get_description
+        run: |
+          DESCRIPTION=$(gh pr view ${{ github.event.pull_request.number }} --json body --jq .body)
+          REPLACED_DESCRIPTION=$(echo $DESCRIPTION | sed 's/\n/;;;:::;;;/g')
+          echo "replaced_description=$REPLACED_DESCRIPTION" >> $GITHUB_OUTPUT 
+      - name: URL to Pull Request description
+        if: contains(steps.get_description.outputs.replaced_description, '## Migration Lists') == false
+        run: |
+          DESCRIPTION=$(echo $REPLACED_DESCRIPTION | sed 's/;;;:::;;;/\n/g')
+          gh pr edit ${{ github.event.pull_request.number }} --body "$DESCRIPTION
+          ## Migration Lists
+          - Migration time: s
+          - Record size: "
+
+        env:
+          REPLACED_DESCRIPTION: ${{ steps.get_description.outputs.replaced_description }}
