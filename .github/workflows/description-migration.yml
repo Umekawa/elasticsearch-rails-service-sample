@@ -15,7 +15,7 @@ jobs:
       replaced_description1: ${{ steps.get_description.outputs.replaced_description }}
     steps:  
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Get current pull request description
         id: get_description
         run: |
