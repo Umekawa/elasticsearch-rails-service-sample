@@ -77,7 +77,7 @@ GEM
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
-    base64 (0.1.1)
+    base64 (0.2.0)
     bigdecimal (3.1.4)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -106,13 +106,13 @@ GEM
       railties (>= 3.2)
     drb (2.1.1)
       ruby2_keywords
-    elastic-transport (8.2.3)
+    elastic-transport (8.3.0)
       faraday (< 3)
       multi_json
-    elasticsearch (8.10.0)
-      elastic-transport (~> 8)
-      elasticsearch-api (= 8.10.0)
-    elasticsearch-api (8.10.0)
+    elasticsearch (8.11.0)
+      elastic-transport (~> 8.3)
+      elasticsearch-api (= 8.11.0)
+    elasticsearch-api (8.11.0)
       multi_json
     elasticsearch-model (7.1.1)
       activesupport (> 3)
