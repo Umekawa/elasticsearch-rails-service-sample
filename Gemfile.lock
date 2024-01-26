@@ -107,13 +107,14 @@ GEM
       railties (>= 3.2)
     drb (2.2.0)
       ruby2_keywords
-    elastic-transport (8.3.0)
+    elastic-transport (8.3.1)
       faraday (< 3)
       multi_json
-    elasticsearch (8.12.0)
+    elasticsearch (8.12.1)
+      base64
       elastic-transport (~> 8.3)
-      elasticsearch-api (= 8.12.0)
-    elasticsearch-api (8.12.0)
+      elasticsearch-api (= 8.12.1)
+    elasticsearch-api (8.12.1)
       multi_json
     elasticsearch-model (7.1.1)
       activesupport (> 3)
