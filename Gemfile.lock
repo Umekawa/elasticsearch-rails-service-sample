@@ -106,13 +106,13 @@ GEM
       dotenv (= 3.1.0)
       railties (>= 6.1)
     drb (2.2.1)
-    elastic-transport (8.3.1)
+    elastic-transport (8.3.2)
       faraday (< 3)
       multi_json
-    elasticsearch (8.12.2)
+    elasticsearch (8.13.0)
       elastic-transport (~> 8.3)
-      elasticsearch-api (= 8.12.2)
-    elasticsearch-api (8.12.2)
+      elasticsearch-api (= 8.13.0)
+    elasticsearch-api (8.13.0)
       multi_json
     elasticsearch-model (7.1.1)
       activesupport (> 3)
